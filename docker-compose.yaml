@@ -23,20 +23,20 @@ services:
 
   packagegroup-cloud-aws:
     extends: main
-    command: source ./../poky/oe-init-build-env && bitbake packagegroup-cloud-aws
+    command: bash -c "source ./../poky/oe-init-build-env && bitbake packagegroup-cloud-aws"
 
   packagegroup-cloud-azure:
     extends: main
-    command: source ./../poky/oe-init-build-env && bitbake packagegroup-cloud-azure
+    command: bash -c "source ./../poky/oe-init-build-env && bitbake packagegroup-cloud-azure"
 
   packagegroup-cloud-google:
     extends: main
-    command: source ./../poky/oe-init-build-env && bitbake packagegroup-cloud-google
+    command: bash -c "source ./../poky/oe-init-build-env && bitbake packagegroup-cloud-google"
 
   node-red:
     extends: main
-    command: source ./../poky/oe-init-build-env && bitbake node-red
+    command: bash -c "source ./../poky/oe-init-build-env && bitbake node-red"
 
   node-red-contrib-upm:
     extends: main
-    command: source ./../poky/oe-init-build-env && bitbake node-red-contrib-upm
+    command: bash -c "source ./../poky/oe-init-build-env && bitbake node-red-contrib-upm"
