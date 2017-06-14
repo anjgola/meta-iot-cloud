@@ -1,3 +1,4 @@
+# https://hub.docker.com/r/gmacario/build-yocto/
 FROM gmacario/build-yocto
 
 # Use bash as the default shell
