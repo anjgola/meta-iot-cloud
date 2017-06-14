@@ -1,0 +1,24 @@
+sudo: required
+
+env:
+  - TARGET=packagegroup-cloud-ibm
+  - TARGET=packagegroup-cloud-aws
+  - TARGET=packagegroup-cloud-azure
+  - TARGET=packagegroup-cloud-google
+  - TARGET=node-red
+  - TARGET=node-red-contrib-upm
+
+services:
+  - docker
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/1.9.0/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+before_script:
+  - docker-compose build ${TARGET}
+
+script:
+  - docker-compose run ${TARGET}

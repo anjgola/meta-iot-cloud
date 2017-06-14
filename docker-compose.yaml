@@ -1,0 +1,42 @@
+version: '2.1'
+
+services:
+
+  main:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+        - ftp_proxy
+    environment:
+      - http_proxy
+      - https_proxy
+      - no_proxy
+      - ftp_proxy
+
+  packagegroup-cloud-ibm:
+    extends: main
+    command: bash -c "source ./../poky/oe-init-build-env && bitbake packagegroup-cloud-ibm"
+
+  packagegroup-cloud-aws:
+    extends: main
+    command: source ./../poky/oe-init-build-env && bitbake packagegroup-cloud-aws
+
+  packagegroup-cloud-azure:
+    extends: main
+    command: source ./../poky/oe-init-build-env && bitbake packagegroup-cloud-azure
+
+  packagegroup-cloud-google:
+    extends: main
+    command: source ./../poky/oe-init-build-env && bitbake packagegroup-cloud-google
+
+  node-red:
+    extends: main
+    command: source ./../poky/oe-init-build-env && bitbake node-red
+
+  node-red-contrib-upm:
+    extends: main
+    command: source ./../poky/oe-init-build-env && bitbake node-red-contrib-upm
