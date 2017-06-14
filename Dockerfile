@@ -14,13 +14,16 @@ RUN sudo chown build.build /usr/src/app
 RUN git clone --depth 1 -b dizzy-next https://github.com/openembedded/meta-openembedded.git
 
 # Clone the Yocto repository
-RUN git clone --depth 1 -b jethro https://git.yoctoproject.org/git/poky
+RUN wget http://iotdk.intel.com/src/3.5/edison/iot-devkit-yp-poky-edison-20160606.zip && \
+    unzip -qq iot-devkit-yp-poky-edison-20160606.zip
+
+ENV POKY_PATH /usr/src/app/iot-devkit-yp-poky-edison-20160606/poky
 
 # Copy meta-iot-cloud sources to working directory
 COPY . /usr/src/app/meta-iot-cloud
 
 # Create build directory
-RUN source /usr/src/app/poky/oe-init-build-env build
+RUN source $POKY_PATH/oe-init-build-env build
 
 # Change working directory to build directory
 WORKDIR /usr/src/app/build

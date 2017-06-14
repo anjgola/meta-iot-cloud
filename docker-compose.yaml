@@ -19,24 +19,24 @@ services:
 
   packagegroup-cloud-ibm:
     extends: main
-    command: bash -c "source ./../poky/oe-init-build-env . && bitbake packagegroup-cloud-ibm"
+    command: bash -c "source $$POKY_PATH/oe-init-build-env . && bitbake packagegroup-cloud-ibm"
 
   packagegroup-cloud-aws:
     extends: main
-    command: bash -c "source ./../poky/oe-init-build-env . && bitbake packagegroup-cloud-aws"
+    command: bash -c "source $$POKY_PATH/oe-init-build-env . && bitbake packagegroup-cloud-aws"
 
   packagegroup-cloud-azure:
     extends: main
-    command: bash -c "source ./../poky/oe-init-build-env . && bitbake packagegroup-cloud-azure"
+    command: bash -c "source $$POKY_PATH/oe-init-build-env . && bitbake packagegroup-cloud-azure"
 
   packagegroup-cloud-google:
     extends: main
-    command: bash -c "source ./../poky/oe-init-build-env . && bitbake packagegroup-cloud-google"
+    command: bash -c "source $$POKY_PATH/oe-init-build-env . && bitbake packagegroup-cloud-google"
 
   node-red:
     extends: main
-    command: bash -c "source ./../poky/oe-init-build-env . && bitbake node-red"
+    command: bash -c "source $$POKY_PATH/oe-init-build-env . && bitbake node-red"
 
   node-red-contrib-upm:
     extends: main
-    command: bash -c "source ./../poky/oe-init-build-env . && bitbake node-red-contrib-upm"
+    command: bash -c "source $$POKY_PATH/oe-init-build-env . && bitbake node-red-contrib-upm"
